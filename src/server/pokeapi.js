@@ -11,11 +11,9 @@ export const getPokemonDetail = (id,fun) => {
         .catch(err => fun(err))
 }
 
-export const getRandomPokemon = (fun) => {
+export const getRandomPokemon = async (fun) => {
     const url_target = `${BASE_URL}pokemon-species/?offset=${getRandomInt(1,1130)}&limit=3`
-    axios.get(url_target, { headers: { Accept: 'application/json', 'Accept-Encoding': 'identity' }, params: { trophies: true } })
-        .then(data => fun(data))
-        .catch(err => fun(err))
+    return await axios.get(url_target, { headers: { Accept: 'application/json', 'Accept-Encoding': 'identity' }, params: { trophies: true } })
 }
 
 export const getPokemonEspecies = (id,fun) => {
