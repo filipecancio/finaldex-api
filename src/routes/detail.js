@@ -1,6 +1,5 @@
 import { Router } from 'express'
 import {getPokemonDetail} from '../server/pokeapi.js'
-import circularJSON from 'circular-json'
 
 export const detailRoutes = Router();
 

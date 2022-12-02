@@ -1,5 +1,5 @@
 import { Router, response } from 'express'
-import {getPokemonEspecies} from '../server/pokeapi.js'
+import {getPokemonEspecies,getPokemonDetail} from '../server/pokeapi.js'
 import circularJSON from 'circular-json'
 
 export const listRoutes = Router();
@@ -9,11 +9,12 @@ listRoutes.get("/", async (req, res) =>{
 
     const response = await getPokemonEspecies("")
     const pokemonPagination = response.data
-    const pokemonList = pokemonPagination.results.map(pokemon => {
+    const pokemonList = pokemonPagination.results.map((pokemon) => {
         return {
             "name":pokemon.name,
             "id": getId(pokemon.url),
-            "avatarUrl": getAvatar(pokemon.url)
+            "avatarUrl": getAvatar(pokemon.url),
+            "color": getRandomColor()
         }
     })
     pokemonPagination.results = pokemonList
@@ -28,4 +29,10 @@ const getId = (url)=> {
 const getAvatar = (url)=> {
     const id = getId(url)
     return `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/home/${id}.png` 
+}
+
+const getRandomColor = ()=>{
+    const colors = ['black','blue','brown','gray','green','pink','purple','red','white','yellow']
+    const randomIndex = Math.floor(Math.random() * colors.length);
+    return colors[randomIndex]
 }
