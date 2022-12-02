@@ -1,6 +1,5 @@
 # Finaldex API
 
-
 ## Pre requisitos
 - Ter o nodeJS
 - Ter o yarn ou npm

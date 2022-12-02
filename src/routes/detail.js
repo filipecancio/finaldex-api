@@ -1,6 +1,7 @@
 import { Router } from 'express'
 import {getPokemonDetail} from '../server/pokeapi.js'
-const detailRoutes = Router();
+
+export const detailRoutes = Router();
 
 detailRoutes.get("/test", (req, response) =>{
     response.send({message:"Backend Pegou"})
@@ -12,5 +13,3 @@ detailRoutes.get("/:id", (req, response) =>{
         response.send(body)
     })
 })
-
-export default detailRoutes
