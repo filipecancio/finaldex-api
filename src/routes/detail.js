@@ -8,10 +8,9 @@ detailRoutes.get("/test", (req, response) =>{
     response.send({message:"Backend Pegou"})
 })
 
-detailRoutes.get("/:id", (req, response) =>{
+detailRoutes.get("/:id", async(req, res) =>{
     const id = req.params.id
-    getPokemonDetail(id,(data)=>{
-        response.send(data)
-    })
+    const response = await getPokemonDetail(id)
+    res.send(response.data)
     
 })

@@ -2,13 +2,8 @@ import axios from 'axios'
 
 const BASE_URL = 'https://pokeapi.co/api/v2/'
 
-export const getPokemonDetail = (id,fun) => {
-    axios.get(`${BASE_URL}pokemon-species/${id}`, { headers: { Accept: 'application/json', 'Accept-Encoding': 'identity' }, params: { trophies: true } })
-        .then(data => { 
-            console.log(data) 
-            fun(data)
-        })
-        .catch(err => fun(err))
+export const getPokemonDetail = async (id,fun) => {
+    return await axios.get(`${BASE_URL}pokemon-species/${id}`, { headers: { Accept: 'application/json', 'Accept-Encoding': 'identity' }, params: { trophies: true } })
 }
 
 export const getRandomPokemon = async (fun) => {
@@ -16,10 +11,8 @@ export const getRandomPokemon = async (fun) => {
     return await axios.get(url_target, { headers: { Accept: 'application/json', 'Accept-Encoding': 'identity' }, params: { trophies: true } })
 }
 
-export const getPokemonEspecies = (id,fun) => {
-    axios.get(`${BASE_URL}pokemon-species${id}/`, { headers: { Accept: 'application/json', 'Accept-Encoding': 'identity' }, params: { trophies: true } })
-        .then(data => fun(data))
-        .catch(err => fun(err))
+export const getPokemonEspecies = async (id,fun) => {
+    return await axios.get(`${BASE_URL}pokemon-species${id}/`, { headers: { Accept: 'application/json', 'Accept-Encoding': 'identity' }, params: { trophies: true } })
 }
 
 const getRandomInt = (min, max) => {
