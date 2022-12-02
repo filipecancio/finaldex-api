@@ -11,8 +11,9 @@ export const getPokemonDetail = (id,fun) => {
 }
 
 export const getRandomPokemon = (fun) => {
-    request(`${BASE_URL}pokemon-species/?offset=${Math.floor(Math.random() * 1130)}&limit=3`,(err,res,body)=> {
-        fun(body.data)
+    const url_target = `${BASE_URL}pokemon-species/?offset=${getRandomInt(1,1130)}&limit=3`
+    request(url_target,(err,res,body)=> {
+        fun(body)
         return body
     })
 }
@@ -22,4 +23,10 @@ export const getPokemonEspecies = (id,fun) => {
         fun(body)
         return body
     })
+}
+
+const getRandomInt = (min, max) => {
+    min = Math.ceil(min)
+    max = Math.floor(max)
+    return Math.floor(Math.random() * (max - min + 1)) + min
 }

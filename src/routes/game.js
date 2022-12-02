@@ -4,11 +4,11 @@ import {getRandomPokemon} from '../server/pokeapi.js'
 export const gameRoutes = Router();
 
 gameRoutes.get("/", (req, response) =>{
-    const rpokemon = getRandomPokemon( async (body) =>{
-        
-        response.send({
-            "pokemons":"aa"
-        })
+    
+    
+    getRandomPokemon( async (body) =>{
+        const {count} = body
+        console.log(count)
+        response.send(body)
     }) 
-    console.log(rpokemon)
 })
