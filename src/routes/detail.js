@@ -1,5 +1,6 @@
 import { Router } from 'express'
 import {getPokemonDetail} from '../server/pokeapi.js'
+import circularJSON from 'circular-json'
 
 export const detailRoutes = Router();
 
@@ -9,7 +10,8 @@ detailRoutes.get("/test", (req, response) =>{
 
 detailRoutes.get("/:id", (req, response) =>{
     const id = req.params.id
-    getPokemonDetail(id, async (body) =>{
-        response.send(body)
+    getPokemonDetail(id,(data)=>{
+        response.send(data)
     })
+    
 })
