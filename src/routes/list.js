@@ -8,7 +8,24 @@ listRoutes.get("/", async (req, res) =>{
     const {offset,limit} = req.query
 
     const response = await getPokemonEspecies("")
-
-    res.send(response.data)
+    const pokemonPagination = response.data
+    const pokemonList = pokemonPagination.results.map(pokemon => {
+        return {
+            "name":pokemon.name,
+            "id": getId(pokemon.url),
+            "avatarUrl": getAvatar(pokemon.url)
+        }
+    })
+    pokemonPagination.results = pokemonList
+    res.send(pokemonPagination)
 
 })
+
+const getId = (url)=> {
+    return url.replace("https://pokeapi.co/api/v2/pokemon-species/", "").replace("/","");
+}
+
+const getAvatar = (url)=> {
+    const id = getId(url)
+    return `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/home/${id}.png` 
+}
