@@ -20,3 +20,9 @@ docker-compose up -d
 ### Comandos Extras
 docker-compose stop
 docker-compose start
+
+## Lista de Endpoints de exemplo
+
+http://localhost:3000/list
+http://localhost:3000/detail/30
+http://localhost:3000/game/
