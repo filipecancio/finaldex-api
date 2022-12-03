@@ -1,7 +1,7 @@
-import { Router, response } from 'express'
-import {getPokemonEspecies,getPokemonDetail} from '../server/pokeapi.js'
+const express = require('express')
+const {getPokemonEspecies,getPokemonDetail} = require('../server/pokeapi')
 
-export const listRoutes = Router();
+const listRoutes = express.Router()
 
 listRoutes.get("/", async (req, res) =>{
     const {offset,limit} = req.query
@@ -35,3 +35,5 @@ const getRandomColor = ()=>{
     const randomIndex = Math.floor(Math.random() * colors.length);
     return colors[randomIndex]
 }
+
+module.exports = listRoutes

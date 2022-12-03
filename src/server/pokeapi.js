@@ -1,17 +1,17 @@
-import axios from 'axios'
+const axios = require('axios')
 
 const BASE_URL = 'https://pokeapi.co/api/v2/'
 
-export const getPokemonDetail = async (id,fun) => {
+exports.getPokemonDetail = async (id,fun) => {
     return await axios.get(`${BASE_URL}pokemon-species/${id}`, { headers: { Accept: 'application/json', 'Accept-Encoding': 'identity' }, params: { trophies: true } })
 }
 
-export const getRandomPokemon = async (fun) => {
+exports.getRandomPokemon = async (fun) => {
     const url_target = `${BASE_URL}pokemon-species/?offset=${getRandomInt(1,1130)}&limit=3`
     return await axios.get(url_target, { headers: { Accept: 'application/json', 'Accept-Encoding': 'identity' }, params: { trophies: true } })
 }
 
-export const getPokemonEspecies = async (offset,limit) => {
+exports.getPokemonEspecies = async (offset,limit) => {
     const queryText = getQuery(offset,limit)
     const url = `${BASE_URL}pokemon-species/${queryText}`
     console.log(url)

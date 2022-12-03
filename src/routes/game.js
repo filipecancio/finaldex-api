@@ -1,7 +1,7 @@
-import { Router, response, urlencoded } from 'express'
-import {getRandomPokemon} from '../server/pokeapi.js'
+const express = require('express')
+const {getRandomPokemon} = require('../server/pokeapi')
 
-export const gameRoutes = Router();
+const gameRoutes = express.Router();
 
 gameRoutes.get("/", async (req, res) =>{
     const response = await getRandomPokemon()
@@ -24,3 +24,5 @@ const getAvatar = (url)=> {
     const id = getId(url)
     return `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/home/${id}.png` 
 }
+
+module.exports = gameRoutes

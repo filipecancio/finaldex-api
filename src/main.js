@@ -1,8 +1,9 @@
-import express,{response} from 'express'
-import {listRoutes} from './routes/list.js'
-import {detailRoutes} from './routes/detail.js'
-import {gameRoutes} from './routes/game.js'
-import axios from 'axios'
+const express = require('express')
+const {response} = require('express')
+const listRoutes = require('./routes/list')
+const detailRoutes = require('./routes/detail')
+const gameRoutes = require('./routes/game')
+const axios = require('axios')
 
 const app = express()
 app.use(express.json())

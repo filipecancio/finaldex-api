@@ -1,7 +1,7 @@
-import { Router } from 'express'
-import {getPokemonDetail} from '../server/pokeapi.js'
+const express = require('express')
+const {getPokemonDetail} = require('../server/pokeapi')
 
-export const detailRoutes = Router();
+const detailRoutes = express.Router();
 
 detailRoutes.get("/test", (req, response) =>{
     response.send({message:"Backend Pegou"})
@@ -19,6 +19,8 @@ detailRoutes.get("/:id", async(req, res) =>{
     })
     
 })
+
+module.exports = detailRoutes
 
 const getId = (url)=> {
     return url.replace("https://pokeapi.co/api/v2/pokemon-species/", "").replace("/","");
