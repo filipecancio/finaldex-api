@@ -1,13 +1,12 @@
 import { Router, response } from 'express'
 import {getPokemonEspecies,getPokemonDetail} from '../server/pokeapi.js'
-import circularJSON from 'circular-json'
 
 export const listRoutes = Router();
 
 listRoutes.get("/", async (req, res) =>{
     const {offset,limit} = req.query
 
-    const response = await getPokemonEspecies("")
+    const response = await getPokemonEspecies(offset,limit)
     const pokemonPagination = response.data
     const pokemonList = pokemonPagination.results.map((pokemon) => {
         return {

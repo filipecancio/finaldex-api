@@ -7,8 +7,8 @@ WORKDIR /usr/src/app
 
 COPY . .
 
-RUN npm install
+RUN yarn
 
 EXPOSE 3000
 
-CMD ["npm", "run", "start"]
+CMD ["yarn", "start"]
